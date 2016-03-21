@@ -125,8 +125,10 @@ Return Value:
         FChars.ReceiveNetBufferListsHandler = FilterReceiveNetBufferLists;
         //FChars.DevicePnPEventNotifyHandler = FilterDevicePnPEventNotify;
         //FChars.NetPnPEventHandler = FilterNetPnPEvent;
-        FChars.StatusHandler = FilterStatus;
+        //FChars.StatusHandler = FilterStatus;
         FChars.CancelSendNetBufferListsHandler = FilterCancelSendNetBufferLists;
+
+		DEBUGP( DL_WARN, __FUNCTION__ "FilterStatus fchars is %p\n", FChars.StatusHandler );
 
         DriverObject->DriverUnload = FilterUnload;
 
@@ -1049,7 +1051,7 @@ NOTE: called at <= DISPATCH_LEVEL
     FILTER_RELEASE_LOCK(&pFilter->Lock, bFalse);
 #endif // DBG
 	*/
-	DEBUGP( DL_INFO, "LWF_Example: FilterStatus\n" );
+	DEBUGP( DL_WARN, __FUNCTION__ "FilterStatus called!\n" );
     NdisFIndicateStatus(pFilter->FilterHandle, StatusIndication);
 	/*
 #if DBG
