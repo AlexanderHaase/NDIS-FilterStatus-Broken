@@ -109,22 +109,22 @@ Return Value:
         // handler, set it to NULL and NDIS will more efficiently pass the
         // operation through on your behalf.
         //
-        FChars.SetOptionsHandler = FilterRegisterOptions;
+        //FChars.SetOptionsHandler = FilterRegisterOptions;
         FChars.AttachHandler = FilterAttach;
         FChars.DetachHandler = FilterDetach;
         FChars.RestartHandler = FilterRestart;
         FChars.PauseHandler = FilterPause;
-        FChars.SetFilterModuleOptionsHandler = FilterSetModuleOptions;
-        FChars.OidRequestHandler = FilterOidRequest;
-        FChars.OidRequestCompleteHandler = FilterOidRequestComplete;
-        FChars.CancelOidRequestHandler = FilterCancelOidRequest;
+        //FChars.SetFilterModuleOptionsHandler = FilterSetModuleOptions;
+        //FChars.OidRequestHandler = FilterOidRequest;
+        //FChars.OidRequestCompleteHandler = FilterOidRequestComplete;
+        //FChars.CancelOidRequestHandler = FilterCancelOidRequest;
 
         FChars.SendNetBufferListsHandler = FilterSendNetBufferLists;
         FChars.ReturnNetBufferListsHandler = FilterReturnNetBufferLists;
         FChars.SendNetBufferListsCompleteHandler = FilterSendNetBufferListsComplete;
         FChars.ReceiveNetBufferListsHandler = FilterReceiveNetBufferLists;
-        FChars.DevicePnPEventNotifyHandler = FilterDevicePnPEventNotify;
-        FChars.NetPnPEventHandler = FilterNetPnPEvent;
+        //FChars.DevicePnPEventNotifyHandler = FilterDevicePnPEventNotify;
+        //FChars.NetPnPEventHandler = FilterNetPnPEvent;
         FChars.StatusHandler = FilterStatus;
         FChars.CancelSendNetBufferListsHandler = FilterCancelSendNetBufferLists;
 
@@ -1026,6 +1026,7 @@ NOTE: called at <= DISPATCH_LEVEL
 --*/
 {
     PMS_FILTER              pFilter = (PMS_FILTER)FilterModuleContext;
+	/*
 #if DBG
     BOOLEAN                  bFalse = FALSE;
 #endif
@@ -1047,9 +1048,10 @@ NOTE: called at <= DISPATCH_LEVEL
     pFilter->bIndicating = TRUE;
     FILTER_RELEASE_LOCK(&pFilter->Lock, bFalse);
 #endif // DBG
-
+	*/
+	DEBUGP( DL_INFO, "LWF_Example: FilterStatus\n" );
     NdisFIndicateStatus(pFilter->FilterHandle, StatusIndication);
-
+	/*
 #if DBG
     FILTER_ACQUIRE_LOCK(&pFilter->Lock, bFalse);
     ASSERT(pFilter->bIndicating == TRUE);
@@ -1058,7 +1060,7 @@ NOTE: called at <= DISPATCH_LEVEL
 #endif // DBG
 
     DEBUGP(DL_TRACE, "<===FilterStatus.\n");
-
+	*/
 }
 
 _Use_decl_annotations_
