@@ -125,7 +125,7 @@ Return Value:
         FChars.ReceiveNetBufferListsHandler = FilterReceiveNetBufferLists;
         //FChars.DevicePnPEventNotifyHandler = FilterDevicePnPEventNotify;
         //FChars.NetPnPEventHandler = FilterNetPnPEvent;
-        //FChars.StatusHandler = FilterStatus;
+        FChars.StatusHandler = FilterStatus;
         FChars.CancelSendNetBufferListsHandler = FilterCancelSendNetBufferLists;
 
 		DEBUGP( DL_WARN, __FUNCTION__ "FilterStatus fchars is %p\n", FChars.StatusHandler );
